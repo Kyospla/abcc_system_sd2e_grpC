@@ -51,7 +51,15 @@
             </div>
             <button name="signin" type="btn" id="btn" class="btn btn-dark" type="submit">ログイン</button>
         </form>
-        
+    <?php
+        if(isset($_POST['login'])){
+            $user_address = $_POST['user_address'];
+            $user_pass = $_POST['user_pass'];
+        }
+        require_once "./DBManager.php";
+        $logc = new DBManager();
+        $logc -> loginCheck($user_address,$user_pass);
+    ?>
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
