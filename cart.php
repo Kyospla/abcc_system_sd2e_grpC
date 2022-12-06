@@ -68,6 +68,55 @@
             <input type="checkbox">
             <?php require 'DBManager.php';?>
             <?php
+            if (!empty($_SESSION['product'])){
+               $sql=$pdo->prepare('select * from product_tbl where id=?');
+              $sql->execute([$_REQUEST['id']]);
+                foreach ($sql->fetchAll() as $row){
+                  echo '<p><img src=image/', $row['id'], '.png"></p>';
+                  echo '<form action="cart-insert.php" method="post">';
+                  echo '<p>商品名:', $row['name'], '</p>';
+                  echo '<p>商品詳細', $row['detail'], '</p>';
+                  echo '<p>価格:', $row['price'], '</p>';
+                  echo '<p>個数:<select name="count">';
+                for ($i=1; $i<=5; $i++){
+                  echo '<option value="', $i, '">', $i, '</option>';
+                }
+              }
+            }
+            ?>
+            </p>
+            </div>
+        </div>
+            <p class="goukei">
+              <?php
+              echo '<p>合計金額(',$count,'個の商品)(税込)</p>'
+              $total = 0;
+
+              for($i=0;$i<$count;$i++) {
+              $ = $price[$i]*$[$i];
+              $total += $sub_total;
+              ?>
+              <?php } ?>
+              <?php print $total;?> 円
+           <div align="center">
+            <button>削除</button>
+            <button type="submit">注文</button>
+            <form action="kakutei.html"></form>
+            
+            
+           </div>
+
+           </body>
+          
+
+
+              
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
+</body>
+</html>
+
+<?php require 'DBManager.php';?>
+            <?php
             $sql=$pdo->prepare('select * from product_tbl where id=?');
             $sql->execute([$_REQUEST['id']]);
             foreach ($sql->fetchAll() as $row){
@@ -77,7 +126,7 @@
             echo '<p>商品詳細', $row['detail'], '</p>';
             echo '<p>価格:', $row['price'], '</p>';
             echo '<p>個数:<select name="count">';
-            for ($i=i; $i<=10; $i++){
+            for ($i=1; $i<=5; $i++){
               echo '<option value="', $i, '">', $i, '</option>';
             }
             echo '</select></p>';
@@ -109,78 +158,3 @@
               echo '<hr>';
             ?>
             
-           </div>
-        </div>
-            <p class="goukei">
-              <?php
-              echo '<p>合計金額(',$count,'個の商品)(税込)</p>'
-              $total = 0;
-
-              for($i=0;$i<$count;$i++) {
-              $ = $price[$i]*$[$i];
-              $total += $sub_total;
-              ?>
-              <?php } ?>
-              <?php print $total;?> 円
-            </p>
-           <div align="center">
-            <button>削除</button>
-            <button type="submit">注文</button>
-            <form action="kakutei.html"></form>
-            
-            
-           </div>
-
-           </body>
-          
-
-
-              
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
-</body>
-</html>
-
-<?php require 'DBManager.php';?>
-<?php
-$sql=$pdo->prepare('select * from product_tbl where id=?');
-$sql->execute([$_REQUEST['id']]);
-foreach ($sql->fetchAll() as $row){
-  echo '<p><img src=image/', $row['id'], '.png"></p>';
-  echo '<form action="cart-insert.php" method="post">';
-  echo '<p>商品名:', $row['name'], '</p>';
-  echo '<p>商品詳細', $row['detail'], '</p>';
-  echo '<p>価格:', $row['price'], '</p>';
-  echo '<p>個数:<select name="count">';
-  for ($i=i; $i<=10; $i++){
-    echo '<option value="', $i, '">', $i, '</option>';
-  }
-  echo '</select></p>';
-  echo '<input type="hidden" name="id" value="', $row['id'], '">';
-  echo '<input type="hidden" name="name" value="', $row['name'], '">';
-  echo '<input type="hidden" name="detail" value="', $row['detail'], '">';
-  echo '<input type="hidden" name="price" value="', $row['price'], '">';
-  
-}
-?>
-
-<?php require 'DBManager.php';?>
-<?php
-session_start();
-$id=$_REQUEST['id'];
-ir (!isset($_SESSION['product'])){
-  $_SESSION['product']=[];
-}
-$count=0;
-if (isset($_SESSION['product'][$id])) {
-  $count=$_SESSION['product'][$id]['count'];
-}
-$_SESSION['product'][$id]=[
-  'name'=$_REQUEST['name'],
-  'price'=$_REQUEST['price'],
-  'count'=>$count+$_REQUEST['count']
-];
-echo '<p>カートに商品を追加しました</p>'
-echo '<hr>';
-require 'cart.php';
-?>
-
