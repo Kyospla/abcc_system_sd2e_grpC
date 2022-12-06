@@ -36,30 +36,21 @@
 <body>
     <h1 id="tytle">小物系ECサイト</h1>
     <div class="row">
-        <form action="" method="post">
+        <form action="./logincheck.php" method="post">
             <div class="col-12 md-1">
                 <div class="form-floating">
-                    <input type="text" class="form-control" id="signin-id" placeholder="メールアドレスを入力">
-                    <label for="signin-id">メールアドレス</label>
+                    <input type="text" class="form-control" id="useraddress" placeholder="メールアドレスを入力">
+                    <label for="useraddress">メールアドレス</label>
                 </div>
             </div>
             <div class="col-12 md-2">
                 <div class="form-floating">
-                    <input type="password" class="form-control" id="signin-pass" placeholder="パスワードを入力">
-                    <label for="signin-pass">パスワード</label>
+                    <input type="password" class="form-control" id="userpass">
+                    <label for="userpass">パスワード</label>
                 </div>
             </div>
             <button name="signin" type="btn" id="btn" class="btn btn-dark" type="submit">ログイン</button>
         </form>
-    <?php
-        if(isset($_POST['login'])){
-            $user_address = $_POST['user_address'];
-            $user_pass = $_POST['user_pass'];
-        }
-        require_once "./DBManager.php";
-        $logc = new DBManager();
-        $logc -> loginCheck($user_address,$user_pass);
-    ?>
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

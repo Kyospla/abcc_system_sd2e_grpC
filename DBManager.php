@@ -7,28 +7,16 @@ class DBManager{
   }
 
   //ログインチェック
-  public function loginCheck($user_address,$user_pass){
-    $pdo = $this->dbConnect();
-    $err_msg="";
+  public function getUserTblByIdAndPass($user_address,$user_pass){
 
-    try{
-      $sql = 'SELECT count(*) FROM users(user_tbl) WHERE user_address=? AND user_pass=?';
-      $stml = $pdo->prepare($sql);
-      $stml-> execute(array($user_address,$user_pass));
-      $result = $stml ->fetch();
-      $stml = null;
-      $pdo = null;
-
-      if($result[0]!=0){
-        header('Location:http://smart-ebino-5557.oops.jp/welcome.html');
-        exit;
-      }else{
-        $err_msg ="アカウント情報が間違っています。";
-      }
-    }catch(PDOException $e){
-      echo $e->getMessage();
-      exit;
-    }
-  }
+    $pdo=$this->dbConnect();
+    $sql="SELECT * FROM users WHERE user_address=? AND user_pass=?";
+    $ps=$pdo->prepare($sql);
+    $ps->bindValue(1,$user_address,PDO::PARAM_STR);
+    $ps->bindValue(2,$user_pass,PDO::PARAM_STR);
+    $ps->execute();
+    $searchArray=$ps->fetchAll();
+    return $searchArray;
+}
 }
 ?>
