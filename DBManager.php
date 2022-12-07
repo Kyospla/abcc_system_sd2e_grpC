@@ -8,9 +8,8 @@ class DBManager{
 
   //ログインチェック
   public function getUserTblByIdAndPass($user_address,$user_pass){
-
     $pdo=$this->dbConnect();
-    $sql="SELECT * FROM users WHERE user_address=? AND user_pass=?";
+    $sql="SELECT * FROM user_tbl WHERE user_address=? AND user_pass=?";
     $ps=$pdo->prepare($sql);
     $ps->bindValue(1,$user_address,PDO::PARAM_STR);
     $ps->bindValue(2,$user_pass,PDO::PARAM_STR);

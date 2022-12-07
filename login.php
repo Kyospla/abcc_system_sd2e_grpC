@@ -13,7 +13,7 @@
             margin-top: 100px;
         }
 
-        #signin-pass,#signin-id {
+        #useraddress,#userpass {
             margin-top: 50px;
             margin: 20px auto;
             width: 50%;
@@ -39,13 +39,13 @@
         <form action="./logincheck.php" method="post">
             <div class="col-12 md-1">
                 <div class="form-floating">
-                    <input type="text" class="form-control" id="useraddress" placeholder="メールアドレスを入力">
+                    <input type="text" class="form-control" id="useraddress" name="useraddress" placeholder="メールアドレスを入力">
                     <label for="useraddress">メールアドレス</label>
                 </div>
             </div>
             <div class="col-12 md-2">
                 <div class="form-floating">
-                    <input type="password" class="form-control" id="userpass">
+                    <input type="password"  class="form-control" id="userpass" name="userpass">
                     <label for="userpass">パスワード</label>
                 </div>
             </div>
