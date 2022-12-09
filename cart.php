@@ -23,6 +23,34 @@
     <link rel="stylesheet" href="css/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 </head>
+          <?php
+            try {
+              $product_id = $_GET["product_id"];
+              $dbn = "mysql:host=mysql208.phy.lolipop.lan;dbname=LAA1418439-ecsite;charset=utf8";
+              $user ="LAA1418439";
+              $password ="Pass0627";
+              $dbh =new PDO($dbn,$user,$password);
+              $dbh -> setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+        
+              $sql = "SELECT * FROM product_tbl WHERE ";
+              $stmt =$dbh -> prepare($sql);
+              $data[]=$product_id;
+              $stmt -> execute($data);
+        
+              $dbh =$null;
+        
+              $rec = $stmt -> fetch(PDO::FETCH_ASSOC);
+        
+              if(empty($rec["product_id"]) === true){
+                $disp_gazou="";
+              }else{
+                $disp_gazou="<img src='../img/".$rec['prodct_id']."\.png'>";
+              }
+              } catch (Exception $e) {
+                print "ただいま障害が発生しております。";
+                print "<a href='http://smart-ebino-5557.oops.jp/login.php'>ログイン画面へ</a>";
+            }
+          ?>
 <body >
     <nav class="navbar navbar-expand navbar-dark bg-dark" aria-label="Second navbar example">
 
@@ -66,38 +94,42 @@
         <div class="cart" style="padding: 10px; margin-bottom: 50px; border: 10px double #333333;margin-left: 3%;margin-right: 3%;overflow-x: scroll;">
            <div>
             <input type="checkbox">
-            <?php require 'DBManager.php';?>
             <?php
-            if (!empty($_SESSION['product'])){
-               $sql=$pdo->prepare('select * from product_tbl where id=?');
-              $sql->execute([$_REQUEST['id']]);
-                foreach ($sql->fetchAll() as $row){
-                  echo '<p><img src=image/', $row['id'], '.png"></p>';
-                  echo '<form action="cart-insert.php" method="post">';
-                  echo '<p>商品名:', $row['name'], '</p>';
-                  echo '<p>商品詳細', $row['detail'], '</p>';
-                  echo '<p>価格:', $row['price'], '</p>';
-                  echo '<p>個数:<select name="count">';
-                for ($i=1; $i<=5; $i++){
-                  echo '<option value="', $i, '">', $i, '</option>';
-                }
-              }
+            $sql=$pdo->prepare('select * from product_tbl where product_id=?');
+            $sql->execute([$_REQUEST['id']]);
+            foreach ($sql->fetchAll() as $row){
+            echo '<p><img src=image/', $row['product_id'], '.png"></p>';
+            echo '<form action="cart-insert.php" method="post">';
+            echo '<p>商品名:', $row['product_name'], '</p>';
+            echo '<p>商品詳細', $row['product_text'], '</p>';
+            echo '<p>価格:', $row['product_price'], '</p>';
+            echo '<p>個数:<select name="count">';
+            for ($i=1; $i<=5; $i++){
+              echo '<option value="', $i, '">', $i, '</option>';
+            }
+            echo '</select></p>';
+            echo '<input type="hidden" name="id" value="', $row['id'], '">';
+            echo '<input type="hidden" name="name" value="', $row['name'], '">';
+            echo '<input type="hidden" name="detail" value="', $row['detail'], '">';
+            echo '<input type="hidden" name="price" value="', $row['price'], '">';
+  
             }
             ?>
-            </p>
-            </div>
+            
+           </div>
         </div>
             <p class="goukei">
               <?php
-              echo '<p>合計金額(',$count,'個の商品)(税込)</p>'
+              echo '<p>合計金額(',$count,'個の商品)(税込)</p>';
               $total = 0;
 
               for($i=0;$i<$count;$i++) {
-              $ = $price[$i]*$[$i];
+              $sub_total = $price[$i]*$name[$i];
               $total += $sub_total;
               ?>
               <?php } ?>
               <?php print $total;?> 円
+            </p>
            <div align="center">
             <button>削除</button>
             <button type="submit">注文</button>
@@ -115,46 +147,3 @@
 </body>
 </html>
 
-<?php require 'DBManager.php';?>
-            <?php
-            $sql=$pdo->prepare('select * from product_tbl where id=?');
-            $sql->execute([$_REQUEST['id']]);
-            foreach ($sql->fetchAll() as $row){
-            echo '<p><img src=image/', $row['id'], '.png"></p>';
-            echo '<form action="cart-insert.php" method="post">';
-            echo '<p>商品名:', $row['name'], '</p>';
-            echo '<p>商品詳細', $row['detail'], '</p>';
-            echo '<p>価格:', $row['price'], '</p>';
-            echo '<p>個数:<select name="count">';
-            for ($i=1; $i<=5; $i++){
-              echo '<option value="', $i, '">', $i, '</option>';
-            }
-            echo '</select></p>';
-            echo '<input type="hidden" name="id" value="', $row['id'], '">';
-            echo '<input type="hidden" name="name" value="', $row['name'], '">';
-            echo '<input type="hidden" name="detail" value="', $row['detail'], '">';
-            echo '<input type="hidden" name="price" value="', $row['price'], '">';
-  
-            }
-            ?>
-
-
-            <?php
-            session_start();
-            $id=$_REQUEST['id'];
-            ir (!isset($_SESSION['product'])){
-            $_SESSION['product']=[];
-            }
-            $count=0;
-            if (isset($_SESSION['product'][$id])) {
-              $count=$_SESSION['product'][$id]['count'];
-            }
-            $_SESSION['product'][$id]=[
-                 'name'=$_REQUEST['name'],
-                 'price'=$_REQUEST['price'],
-                  'count'=>$count+$_REQUEST['count']
-            ];
-              echo '<p>カートに商品を追加しました</p>'
-              echo '<hr>';
-            ?>
-            

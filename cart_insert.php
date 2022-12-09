@@ -1,15 +1,15 @@
-<?php require 'DBManager.php';?>
+<?php require_once 'DBManager.php';?>
 <?php
-session_start();
+
 $id=$_REQUEST['id'];
-if (!isset($_SESSION['product'])){
-  $_SESSION['product']=[];
+if (!isset($_REQUEST['product'])){
+  $_REQUEST['product']=[];
 }
 $count=0;
-if (isset($_SESSION['product'][$id])) {
-  $count=$_SESSION['product'][$id]['count'];
+if (isset($_REQUEST['product'][$id])) {
+  $count=$_REQUEST['product'][$id]['count'];
 }
-$_SESSION['product'][$id]=[
+$_REQUEST['product'][$id]=[
   'name'=>$_REQUEST['name'],
   'price'=>$_REQUEST['price'],
   'count'=>$count+$_REQUEST['count']
