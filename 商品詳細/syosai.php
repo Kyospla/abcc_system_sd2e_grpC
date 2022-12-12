@@ -111,10 +111,10 @@
               </div>
               
               <div class="button_solid001">
-                <a href="Shohin_cart.php?<?php print $code;?>">カートに入れる</a><br>
+                <a href="cart.php?<?php print $code;?>">カートに入れる</a><br>
               </div>
               <div class="button_solid001">
-                <a href="Tyumon_kakutei.php?code=<?php print $code;?>">今すぐ購入</a><br>
+                <a href="tyumonkakutei.php?code=<?php print $code;?>">今すぐ購入</a><br>
               </div>
 
             </div>

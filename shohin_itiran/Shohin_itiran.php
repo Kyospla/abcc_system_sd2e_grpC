@@ -69,124 +69,126 @@
     </div>
     <!--商品一覧-->
     <div id="kobetu1" class="col-md-3">
+      <a href="	http://smart-ebino-5557.oops.jp/shohin_shosai/syosai.php"> 
       <p>商品名</p>
-      <img src="./img/10001.png" alt="商品画像" width="250px" height="200px">
+      <img src="../img/10001.png" alt="商品画像" width="250px" height="200px">
       <p>商品価格</p>
+      </a>
     </div>
     <div id="kobetu2" class="col-md-3">
       <p>商品名</p>
-      <img src="./img/10002.png" alt="商品画像" width="250px" height="200px">
+      <img src="../img/10002.png" alt="商品画像" width="250px" height="200px">
       <p>商品価格</p>
     </div>
     <div id="kobetu3" class="col-md-3">
       <p>商品名</p>
-      <img src="./img/10003.png" alt="商品画像" width="250px" height="200px">
+      <img src="../img/10003.png" alt="商品画像" width="250px" height="200px">
       <p>商品価格</p>
     </div>
     <div id="kobetu4" class="col-md-3">
       <p>商品名</p>
-      <img src="./img/10004.png"  alt="商品画像" width="250px" height="200px">
+      <img src="../img/10004.png"  alt="商品画像" width="250px" height="200px">
       <p>商品価格</p>
     </div>
     <div id="kobetu5" class="col-md-3">
       <p>商品名</p>
-      <img src="./img/10005.png" alt="商品画像" width="250px" height="200px">
+      <img src="../img/10005.png" alt="商品画像" width="250px" height="200px">
       <p>商品価格</p>
     </div>
     <div id="kobetu6" class="col-md-3">
       <p>商品名</p>
-      <img src="./img/10006.png" alt="商品画像" width="250px" height="200px">
+      <img src="../img/10006.png" alt="商品画像" width="250px" height="200px">
       <p>商品価格</p>
     </div>
     <div id="kobetu7" class="col-md-3">
       <p>商品名</p>
-      <img src="./img/20001.png" alt="商品画像" width="250px" height="200px">
+      <img src="../img/20001.png" alt="商品画像" width="250px" height="200px">
       <p>商品価格</p>
     </div>
     <div id="kobetu8" class="col-md-3">
       <p>商品名</p>
-      <img src="./img/20002.png" alt="商品画像" width="250px" height="200px">
+      <img src="../img/20002.png" alt="商品画像" width="250px" height="200px">
       <p>商品価格</p>
     </div>
     <div id="kobetu9" class="col-md-3">
       <p>商品名</p>
-      <img src="./img/20003.png" alt="商品画像" width="250px" height="200px">
+      <img src="../img/20003.png" alt="商品画像" width="250px" height="200px">
       <p>商品価格</p>
     </div>
     <div id="kobetu10" class="col-md-3">
       <p>商品名</p>
-      <img src="./img/20004.png" alt="商品画像" width="250px" height="200px">
+      <img src="../img/20004.png" alt="商品画像" width="250px" height="200px">
       <p>商品価格</p>
     </div>
     <div id="kobetu11" class="col-md-3">
       <p>商品名</p>
-      <img src="./img/20005.png" alt="商品画像" width="250px" height="200px">
+      <img src="../img/20005.png" alt="商品画像" width="250px" height="200px">
       <p>商品価格</p>
     </div>
     <div id="kobetu12" class="col-md-3">
       <p>商品名</p>
-      <img src="./img/20006.png" alt="商品画像" width="250px" height="200px">
+      <img src="../img/20006.png" alt="商品画像" width="250px" height="200px">
       <p>商品価格</p>
     </div>
     <div id="kobetu13" class="col-md-3">
       <p>商品名</p>
-      <img src="./img/30001.png" alt="商品画像" width="250px" height="200px">
+      <img src="../img/30001.png" alt="商品画像" width="250px" height="200px">
       <p>商品価格</p>
     </div>
     <div id="kobetu14" class="col-md-3">
       <p>商品名</p>
-      <img src="./img/30002.png" alt="商品画像" width="250px" height="200px">
+      <img src="../img/30002.png" alt="商品画像" width="250px" height="200px">
       <p>商品価格</p>
     </div>
     <div id="kobetu15" class="col-md-3">
       <p>商品名</p>
-      <img src="./img/30003.png" alt="商品画像" width="250px" height="200px">
+      <img src="../img/30003.png" alt="商品画像" width="250px" height="200px">
       <p>商品価格</p>
     </div>
     <div id="kobetu16" class="col-md-3">
       <p>商品名</p>
-      <img src="./img/30004.png" alt="商品画像" width="250px" height="200px">
+      <img src="../img/30004.png" alt="商品画像" width="250px" height="200px">
       <p>商品価格</p>
     </div>
     <div id="kobetu17" class="col-md-3">
       <p>商品名</p>
-      <img src="./img/30005.png" alt="商品画像" width="250px" height="200px">
+      <img src="../img/30005.png" alt="商品画像" width="250px" height="200px">
       <p>商品価格</p>
     </div>
     <div id="kobetu18" class="col-md-3">
       <p>商品名</p>
-      <img src="./img/30006.png" alt="商品画像" width="250px" height="200px">
+      <img src="../img/30006.png" alt="商品画像" width="250px" height="200px">
       <p>商品価格</p>
     </div>
     <div id="kobetu19" class="col-md-3">
       <p>商品名</p>
-      <img src="./img/40001.png" alt="商品画像" width="250px" height="200px">
+      <img src="../img/40001.png" alt="商品画像" width="250px" height="200px">
       <p>商品価格</p>
     </div>
     <div id="kobetu20" class="col-md-3">
       <p>商品名</p>
-      <img src="./img/40002.png" alt="商品画像" width="250px" height="200px">
+      <img src="../img/40002.png" alt="商品画像" width="250px" height="200px">
       <p>商品価格</p>
     </div>
     <div id="kobetu21" class="col-md-3">
       <p>商品名</p>
-      <img src="./img/40003.png" alt="商品画像" width="250px" height="200px">
+      <img src="../img/40003.png" alt="商品画像" width="250px" height="200px">
   
       <p>商品価格</p>
     </div>
     <div id="kobetu22" class="col-md-3">
       <p>商品名</p>
-      <img src="./img/40004.png" alt="商品画像" width="250px" height="200px">
+      <img src="../img/40004.png" alt="商品画像" width="250px" height="200px">
       <p>商品価格</p>
     </div>
     <div id="kobetu23" class="col-md-3">
       <p>商品名</p>
-      <img src="./img/40005.png" alt="商品画像" width="250px" height="200px">
+      <img src="../img/40005.png" alt="商品画像" width="250px" height="200px">
       <p>商品価格</p>
     </div>
     <div id="kobetu24" class="col-md-3">
       <p>商品名</p>
-      <img src="./img/40006.png" alt="商品画像" width="250px" height="200px">
+      <img src="../img/40006.png" alt="商品画像" width="250px" height="200px">
 
       <p>商品価格</p>
     </div>
