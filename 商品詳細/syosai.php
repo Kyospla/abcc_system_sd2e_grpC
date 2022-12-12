@@ -14,32 +14,32 @@
 
 <body>
   <?php
-    try {
-      $code = $_GET["product_id"];
-      $dbn = "mysql:host=mysql208.phy.lolipop.lan;dbname=LAA1418439-ecsite;charset=utf8";
-      $user ="LAA1418439";
-      $password ="Pass0627";
-      $dbh =new PDO($dbn,$user,$password);
-      $dbh -> setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+  try {
+    $code = $_GET["product_id"];
+    $dbn = "mysql:host=mysql208.phy.lolipop.lan;dbname=LAA1418439-ecsite;charset=utf8";
+    $user = "LAA1418439";
+    $password = "Pass0627";
+    $dbh = new PDO($dbn, $user, $password);
+    $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-      $sql = "SELECT * FROM product_tbl WHERE product_id=10001";
-      $stmt =$dbh -> prepare($sql);
-      $data[]=$code;
-      $stmt -> execute($data);
+    $sql = "SELECT * FROM product_tbl WHERE product_id=?";
+    $stmt = $dbh->prepare($sql);
+    $data[] = $code;
+    $stmt->execute($data);
 
-      $dbh =$null;
+    $dbh = $null;
 
-      $rec = $stmt -> fetch(PDO::FETCH_ASSOC);
+    $rec = $stmt->fetch(PDO::FETCH_ASSOC);
 
-      if(empty($rec["product_id"]) === true){
-        $disp_gazou="";
-      }else{
-        $disp_gazou="<img src='../img/".$rec['prodct_id']."\.png'>";
-      }
-    } catch (Exception $e) {
-      print "ただいま障害が発生しております。";
-      print "<a href='http://smart-ebino-5557.oops.jp/login.php'>ログイン画面へ</a>";
+    if (empty($rec["product_id"]) === true) {
+      $disp_gazou = "";
+    } else {
+      $disp_gazou = "<img src='../img/" . $rec['prodct_id'] . "\.png'>";
     }
+  } catch (Exception $e) {
+    print "ただいま障害が発生しております。";
+    print "<a href='http://smart-ebino-5557.oops.jp/login.php'>ログイン画面へ</a>";
+  }
   ?>
 
   <body background="img/moroccan-flower.png"></body>
@@ -65,62 +65,63 @@
       <div class="price">
         <h2><?php print $rec['product_price']; ?></h2><br>
       </div>
-      <div class="container pt20">
-        <div class="row">
-          <div class="inverse">
-            <div class="container">
-              <div class="row">
-                <div class="col-xs-12">
-                  <div class="form-group">
-                    <label class="control-label">サイズ</label>
-                    <div class="select-wrap select-inverse">
-                      <select name="" id="">
-                        <option value="">FREE</option>
-                        <option value="">S</option>
-                        <option value="">M</option>
-                        <option value="">L</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="container pt20">
-            <div class="row">
-              <div class="inverse">
-                <div class="container">
-                  <div class="row">
-                    <div class="col-xs-12">
-                      <div class="form-group">
-                        <label class="control-label">カラー</label>
-                        <div class="select-wrap select-inverse">
-                          <select name="" id="">
-                            <option value="">ブラック</option>
-                            <option value="">ホワイト</option>
-                            <option value="">グレー</option>
-                            <option value="">シルバー</option>
-                            <option value="">ゴールド</option>
-                          </select>
-                        </div>
+      <form action="cart_insert.php" method="$_POST">
+        <div class="container pt20">
+          <div class="row">
+            <div class="inverse">
+              <div class="container">
+                <div class="row">
+                  <div class="col-xs-12">
+                    <div class="form-group">
+                      <label class="control-label">サイズ</label>
+                      <div class="select-wrap select-inverse">
+                        <select name="size" id="size">
+                          <option value="free">FREE</option>
+                          <option value="s">S</option>
+                          <option value="m">M</option>
+                          <option value="l">L</option>
+                        </select>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              
-              <div class="button_solid001">
-                <a href="cart.php?<?php print $code;?>">カートに入れる</a><br>
-              </div>
-              <div class="button_solid001">
-                <a href="tyumonkakutei.php?code=<?php print $code;?>">今すぐ購入</a><br>
-              </div>
-
             </div>
-          </div>
 
-          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+            <div class="container pt20">
+              <div class="row">
+                <div class="inverse">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-xs-12">
+                        <div class="form-group">
+                          <label class="control-label">カラー</label>
+                          <div class="select-wrap select-inverse">
+                            <select name="color" id="color">
+                              <option value="Black">ブラック</option>
+                              <option value="White">ホワイト</option>
+                              <option value="Gray">グレー</option>
+                              <option value="Silver">シルバー</option>
+                              <option value="Gold">ゴールド</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="button_solid001">
+                  <a href="cart_insert.php?<?php print $code; ?>">カートに入れる</a><br>
+                </div>
+                <div class="button_solid001">
+                  <a href="tyumonkakutei.php?code=<?php print $code; ?>">今すぐ購入</a><br>
+                </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 
 </html>
