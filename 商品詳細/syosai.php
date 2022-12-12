@@ -15,7 +15,7 @@
 <body>
   <?php
     try {
-      $product_id = $_GET["product_id"];
+      $code = $_GET["product_id"];
       $dbn = "mysql:host=mysql208.phy.lolipop.lan;dbname=LAA1418439-ecsite;charset=utf8";
       $user ="LAA1418439";
       $password ="Pass0627";
@@ -24,7 +24,7 @@
 
       $sql = "SELECT * FROM product_tbl WHERE product_id=10001";
       $stmt =$dbh -> prepare($sql);
-      $data[]=$product_id;
+      $data[]=$code;
       $stmt -> execute($data);
 
       $dbh =$null;
@@ -109,12 +109,12 @@
                   </div>
                 </div>
               </div>
-
+              
               <div class="button_solid001">
-                <a href="#">カートに入れる</a><br>
+                <a href="Shohin_cart.php?<?php print $code;?>">カートに入れる</a><br>
               </div>
               <div class="button_solid001">
-                <a href="#">今すぐ購入</a><br>
+                <a href="Tyumon_kakutei.php?code=<?php print $code;?>">今すぐ購入</a><br>
               </div>
 
             </div>
