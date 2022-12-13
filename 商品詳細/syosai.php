@@ -65,7 +65,7 @@
       <div class="price">
         <h2><?php print $rec['product_price']; ?></h2><br>
       </div>
-      <form action="cart_insert.php" method="$_POST">
+      <form action="cart.php" method="$_POST">
         <div class="container pt20">
           <div class="row">
             <div class="inverse">
