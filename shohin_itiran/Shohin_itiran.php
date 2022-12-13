@@ -94,8 +94,8 @@
   ?>  
   
     <div id="kobetu1" class="col-md-3">
-      <p>商品名:<?php echo $NameArr[0]?></p>
       <?php print "<a href='syosai.php?code=".$IdArr[0]."'>";?>
+      <p>商品名:<?php echo $NameArr[0]?></p>
       <img src="../img/10001.png" alt="商品画像" width="250px" height="200px">
       <p>商品価格:<?php echo $PriceArr[0]?></a></p>
     </div>
