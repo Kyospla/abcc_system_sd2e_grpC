@@ -54,32 +54,3 @@
     border-right: double 7px #4ec4d3;
 }
 
-#kobetu1 {
-    grid-row: 1/2;
-    grid-column: 2/3;
-}
-
-#kobetu2 {
-    grid-row: 1/2;
-    grid-column: 3/4;
-}
-
-#kobetu3 {
-    grid-row: 1/2;
-    grid-column: 4/5;
-}
-
-#kobetu4 {
-    grid-row: 2/3;
-    grid-column: 2/3;
-}
-
-#kobetu5 {
-    grid-row: 2/3;
-    grid-column: 3/4;
-}
-
-#kobetu6 {
-    grid-row: 2/3;
-    grid-column: 4/5;
-}
