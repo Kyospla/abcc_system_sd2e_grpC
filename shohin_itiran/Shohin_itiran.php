@@ -19,14 +19,12 @@
 
 <body>
   <!--ナビゲーションバー-->
-  <nav class="navbar navbar-dark bg-dark">
+  <nav class="navbar navbar-dark text-white bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">ナビゲーションバー</a>
-      //修正必須↓
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item"><a href="#" class="nav-link active">ホーム</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">カート</a></li>
-      </ul>
+      <div class="home mr-auto">
+        <i class="bi bi-house"></i>
+        <i class="bi bi-bag"></i>
+      </div>
     </div>
   </nav>
   <!--グリッド定義-->

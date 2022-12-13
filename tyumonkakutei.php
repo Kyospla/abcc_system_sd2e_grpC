@@ -34,15 +34,14 @@
           </style>
     </head>
     <body>
-        <nav class="navbar navbar-dark bg-dark">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="#">ナビゲーションバー</a>
-              <ul class="navbar-nav ml-auto"> 
-                <li class="nav-item"><a href="#" class="nav-link active">ホーム</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">カート</a></li>
-              </ul>
-            </div>
-        </nav>
+    <nav class="navbar navbar-dark text-white bg-dark">
+      <div class="container-fluid">
+        <div class="home mr-auto">
+          <i class="bi bi-house"></i>
+            <i class="bi bi-bag"></i>
+       </div>
+     </div>
+    </nav>
             <div class="container"><br>
                 <div class="row">
                   <div class="col-sm-8">
