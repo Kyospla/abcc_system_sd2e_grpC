@@ -23,34 +23,32 @@
     <link rel="stylesheet" href="css/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 </head>
-          <?php
-            try {
-              $product_id = $_GET["product_id"];
-              $dbn = "mysql:host=mysql208.phy.lolipop.lan;dbname=LAA1418439-ecsite;charset=utf8";
-              $user ="LAA1418439";
-              $password ="Pass0627";
-              $dbh =new PDO($dbn,$user,$password);
-              $dbh -> setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-        
-              $sql = "SELECT * FROM product_tbl WHERE ";
-              $stmt =$dbh -> prepare($sql);
-              $data[]=$product_id;
-              $stmt -> execute($data);
-        
-              $dbh =$null;
-        
-              $rec = $stmt -> fetch(PDO::FETCH_ASSOC);
-        
-              if(empty($rec["product_id"]) === true){
-                $disp_gazou="";
-              }else{
-                $disp_gazou="<img src='../img/".$rec['prodct_id']."\.png'>";
-              }
-              } catch (Exception $e) {
-                print "ただいま障害が発生しております。";
-                print "<a href='http://smart-ebino-5557.oops.jp/login.php'>ログイン画面へ</a>";
-            }
-          ?>
+<?php
+require_once 'DBManager.php';
+  $dbmng = new DBManager();
+  $quanity;
+  $count=0;
+  foreach ($dbmng->$productInsert() as $row){
+    $cart_id[] = $row['cart_id'];
+    $product_id[] = $row['product_id'];
+    $size_id[] = $row['size_id'];
+  }
+              
+  if(isset($_GET['product_id'])){
+    $prArr = [];
+    if(count($_GET['product_id']) != 0){
+      $prArr = $_GET['product_id'];
+    }
+    if(count($prArr) == 0){
+                
+      $prArr[0] = $quanity;
+    }else{
+      if(in_array($quanity,$prArr, true)===false){
+
+      }
+    }
+  }
+?>
 <body >
     <nav class="navbar navbar-expand navbar-dark bg-dark" aria-label="Second navbar example">
 
@@ -95,31 +93,28 @@
            <div>
             <input type="checkbox">
             <?php
-            $sql=$pdo->prepare('select * from product_tbl where product_id=?');
-            $sql->execute([$_REQUEST['id']]);
-            foreach ($sql->fetchAll() as $row){
-            echo '<p><img src=image/', $row['product_id'], '.png"></p>';
-            echo '<form action="cart-insert.php" method="post">';
-            echo '<p>商品名:', $row['product_name'], '</p>';
-            echo '<p>商品詳細', $row['product_text'], '</p>';
-            echo '<p>価格:', $row['product_price'], '</p>';
-            echo '<p>個数:<select name="count">';
-            for ($i=1; $i<=5; $i++){
-              echo '<option value="', $i, '">', $i, '</option>';
-            }
-            echo '</select></p>';
-            echo '<input type="hidden" name="id" value="', $row['id'], '">';
-            echo '<input type="hidden" name="name" value="', $row['name'], '">';
-            echo '<input type="hidden" name="detail" value="', $row['detail'], '">';
-            echo '<input type="hidden" name="price" value="', $row['price'], '">';
+            
+            
   
-            }
+            
             ?>
             
            </div>
         </div>
             <p class="goukei">
               <?php
+              for($i = 0; $i < count($product_id);$i++){
+                  $price = $product_price[$product_id[$i]];
+              }
+              
+                echo '<p><img src=image/'.$row['product_id']. '.png"></p>';
+                echo '<form action="cart-insert.php" method="post">';
+                echo '<p>商品名:' .$row['product_name']. '</p>';
+                echo '<p>商品詳細'.$row['product_text']. '</p>';
+                echo '<p>価格:'.$row['product_price']. '</p>';
+                echo '<p>個数:'.$_POST['quanity'].'</p>';
+                echo '<p>サイズ:'.$_POST['size'].'</p>';
+
               echo '<p>合計金額(',$count,'個の商品)(税込)</p>';
               $total = 0;
 
@@ -133,7 +128,7 @@
            <div allign="center">
             <button>削除</button>
             <button type="submit">注文</button>
-            <form action="kakutei.html"></form>
+            <form action="./tyumonkakutei.php"></form>
             
             
            </div>
