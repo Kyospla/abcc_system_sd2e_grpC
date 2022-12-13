@@ -130,7 +130,7 @@
               <?php } ?>
               <?php print $total;?> 円
             </p>
-           <div align="center">
+           <div allign="center">
             <button>削除</button>
             <button type="submit">注文</button>
             <form action="kakutei.html"></form>

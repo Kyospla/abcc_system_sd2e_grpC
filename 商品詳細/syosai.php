@@ -95,14 +95,14 @@
                     <div class="row">
                       <div class="col-xs-12">
                         <div class="form-group">
-                          <label class="control-label">カラー</label>
+                          <label class="control-label">数量</label>
                           <div class="select-wrap select-inverse">
-                            <select name="color" id="color">
-                              <option value="Black">ブラック</option>
-                              <option value="White">ホワイト</option>
-                              <option value="Gray">グレー</option>
-                              <option value="Silver">シルバー</option>
-                              <option value="Gold">ゴールド</option>
+                            <select name="quanity" id="quanity">
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                              <option value="5">5</option>
                             </select>
                           </div>
                         </div>
