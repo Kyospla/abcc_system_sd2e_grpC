@@ -26,27 +26,41 @@
 <?php
 require_once 'DBManager.php';
   $dbmng = new DBManager();
+  $product_id;
+  $cart_id;
+  $size_id;
   $quanity;
   $count=0;
+  $total = 0;
   foreach ($dbmng->$productInsert() as $row){
     $cart_id[] = $row['cart_id'];
     $product_id[] = $row['product_id'];
     $size_id[] = $row['size_id'];
   }
-              
-  if(isset($_GET['product_id'])){
+  //商品詳細画面から遷移
+  if(isset($_GET['product_id']) && !isset($_POST['deleteCart'])){
+    
     $prArr = [];
     if(count($_GET['product_id']) != 0){
       $prArr = $_GET['product_id'];
     }
+    //初回
     if(count($prArr) == 0){
                 
       $prArr[0] = $quanity;
     }else{
       if(in_array($quanity,$prArr, true)===false){
 
+      }else{
+
       }
     }
+
+    $_GET['product_id'] = null;
+
+    $_
+  }else if(isset($_POST['deleteCart'])){
+
   }
 ?>
 <body >
@@ -88,41 +102,32 @@ require_once 'DBManager.php';
 
             </form>
         </div></nav>
-      
-        <div class="cart" style="padding: 10px; margin-bottom: 50px; border: 10px double #333333;margin-left: 3%;margin-right: 3%;overflow-x: scroll;">
-           <div>
-            <input type="checkbox">
-            <?php
-            
-            
-  
-            
-            ?>
-            
-           </div>
-        </div>
-            <p class="goukei">
+
               <?php
               for($i = 0; $i < count($product_id);$i++){
                   $price = $product_price[$product_id[$i]];
-              }
               
-                echo '<p><img src=image/'.$row['product_id']. '.png"></p>';
+                echo '<div class="cart" style="padding: 10px; margin-bottom: 50px; border: 10px double #333333;margin-left: 3%;margin-right: 3%;overflow-x: scroll;">';
+              
+                echo '<img src=image/'.$row['product_id']. '.png">';
                 echo '<form action="cart-insert.php" method="post">';
                 echo '<p>商品名:' .$row['product_name']. '</p>';
                 echo '<p>商品詳細'.$row['product_text']. '</p>';
                 echo '<p>価格:'.$row['product_price']. '</p>';
                 echo '<p>個数:'.$_POST['quanity'].'</p>';
                 echo '<p>サイズ:'.$_POST['size'].'</p>';
+                echo '</div>';
 
-              echo '<p>合計金額(',$count,'個の商品)(税込)</p>';
-              $total = 0;
 
-              for($i=0;$i<$count;$i++) {
-              $sub_total = $price[$i]*$name[$i];
-              $total += $sub_total;
+              }
+                
+                echo '<p class="goukei">'
+                echo '合計金額(税込)';
+                echo '</p>';
+              
+                $total += $price * $9;
               ?>
-              <?php } ?>
+              
               <?php print $total;?> 円
             </p>
            <div allign="center">
