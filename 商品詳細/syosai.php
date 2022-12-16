@@ -34,7 +34,7 @@
     if (empty($rec["product_id"]) === true) {
       $disp_gazou = "";
     } else {
-      $disp_gazou = "<img src='../img/" . $rec['prodct_id'] . "\.png'>";
+      $disp_gazou = "<img src='../img/" . $rec['product_id'] . ".png'>";
     }
   } catch (Exception $e) {
     print "ただいま障害が発生しております。";
@@ -54,8 +54,7 @@
 
   <div class="row">
     <div class="shohin col-md-7">
-      <img src="img/shohin1.jpg" height="400" width="500">
-
+    <?php print $disp_gazou; ?>
       <p>商品説明<br>
         <?php print $rec['product_text']; ?></p>
     </div>
