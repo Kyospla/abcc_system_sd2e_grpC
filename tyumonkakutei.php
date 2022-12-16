@@ -57,16 +57,12 @@
                       </tr>
                       <tr>
                         <td width="90%">
-                          小計：
+                          小計：￥
                         </td>
                       </tr>
                       <tr>
                         <td width="90%">
-                          <?php
-                            for ($i=1; $i<=5; $i++){
-                              echo '<option value="', $i, '">', $i, '</option>';
-                            }
-                          ?>
+                          数量
                         </td>
                       </tr>
                       <tr>
