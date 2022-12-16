@@ -121,9 +121,9 @@
                   <div class="col-sm-4">
                   </div>
                   <div class="col-sm-8">
-                    <p class="font"><?php } ?>
+                    <p class="font">
                                         合計金額: <?php print $total;?> 円</p><br>
-                    <button class="example btn btn-lg btn-warning" onclick="location.href=''"><h5> 注文を確定する </h5></button>
+                    <button class="example btn btn-lg btn-warning" onclick="location.href='index.html'"><h5> 注文を確定する </h5></button>
                   </div>
                 </div>
               </div>
